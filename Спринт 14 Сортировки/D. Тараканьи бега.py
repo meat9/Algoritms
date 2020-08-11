@@ -24,3 +24,17 @@
 # 9 4 9 8 4
 # Вывод
 # 4 9
+
+with open('input.txt') as f:
+    n = int(f.readline())
+    m = int(f.readline())
+    a = tuple(map(int, (f.readline().split())))
+
+    b = tuple(set(map(int, (f.readline().split()))))
+
+c=[]
+
+for i in a:
+    if i in b and i not in c:
+        c.append(i)
+print(*(c))
