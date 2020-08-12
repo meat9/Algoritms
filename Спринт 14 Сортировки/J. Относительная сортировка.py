@@ -26,3 +26,32 @@
 # Вывод
 # 2 4 3 5 6 0 7 7 8 9
 
+with open('input.txt') as f:
+    n = int(f.readline())
+    arr1 = list(map(int, (f.readline().split())))
+    m = int(f.readline())
+    arr2 = list(map(int, (f.readline().split())))
+
+
+def relativeSortArray(arr1, arr2):
+    d = {}
+    for i in arr1:
+        if i not in d:
+            d[i]= 1
+        else:
+            d[i]+=1
+    res = []
+    temp = []
+    for i in arr2:
+        for j in range(d[i]):
+            res.append(i)
+            d[i] =0
+    for k,v in d.items():
+        if v:
+            for i in range(v):
+                temp.append(k)
+    temp.sort()
+    res.extend(temp)
+    return res
+
+print(*(relativeSortArray(arr1, arr2)))
