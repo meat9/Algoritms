@@ -35,3 +35,17 @@
 # 1 0 2 3 4
 # Вывод
 # 4
+
+with open('input.txt') as f:
+    n = int(f.readline())
+    arr = list(map(int, (f.readline().split())))
+
+
+def maxChunksToSorted(arr):
+    ans = ma = 0
+    for i, x in enumerate(arr):
+        ma = max(ma, x)
+        if ma == i: ans += 1
+    return ans
+
+print(maxChunksToSorted(arr))
