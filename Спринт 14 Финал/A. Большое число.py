@@ -21,3 +21,20 @@
 # 1 783 2
 # Вывод
 # 78321
+
+with open('input.txt') as f:
+    n = int(f.readline())
+    nums = list(map(str, (f.readline().split())))
+
+def Biggest(nums):
+
+    res = ""
+    for i in range(len(nums)):
+        for j in range(len(nums) - 1 - i):
+            if str(nums[j + 1]) + str(nums[j]) < str(nums[j]) + str(nums[j + 1]):
+                nums[j + 1], nums[j] = nums[j], nums[j + 1]
+        res += str(nums[len(nums) - 1- i])
+    return res
+
+
+print(Biggest(nums))

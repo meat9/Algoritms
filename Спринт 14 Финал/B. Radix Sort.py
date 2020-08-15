@@ -28,3 +28,32 @@
 # 7 36 2 25 6
 # Вывод
 # 2 6 7 25 36
+
+with open('input.txt') as f:
+    n = int(f.readline())
+    arr = list(map(int, (f.readline().split())))
+
+def Radix(arr):
+    ten = 10
+    maxLength = False
+    tmp , placement = -1, 1
+
+    while not maxLength:
+        maxLength = True
+        buckets = [list() for _ in range(ten)]
+        for  i in arr:
+            tmp = i // placement
+            buckets[tmp % ten].append(i)
+            if maxLength and tmp > 0:
+                maxLength = False
+        a = 0
+        for b in range(ten):
+            buck = buckets[b]
+            for i in buck:
+                arr[a] = i
+                a += 1
+        placement *= ten
+    return arr
+
+
+print(*(Radix(arr)))
