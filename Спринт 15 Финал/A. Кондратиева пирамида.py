@@ -59,12 +59,6 @@ class Barsukmeeting:
     def __repr__(self):
         return self.data
 
-heap = []
-with open('input.txt') as f:
-    n = int(f.readline())
-    for pos in range(n):
-        heap.append(Barsukmeeting(f.readline().strip(), pos))
-
 
 def heapify(array, n, i):
     root = i
@@ -85,7 +79,14 @@ def heapsort(array, n):
     for i in range(n - 1, 0, -1):
         array[i], array[0] = array[0], array[i]
         heapify(array, i, 0)
+
+
+if __name__ == "__main__":
+    heap = []
+    with open('input.txt') as f:
+        n = int(f.readline())
+        for pos in range(n):
+            heap.append(Barsukmeeting(f.readline().strip(), pos))
+    heapsort(heap, n)
     for elem in heap:
         print(elem)
-
-heapsort(heap, n)
